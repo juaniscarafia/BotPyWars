@@ -18,7 +18,6 @@
 # For full API description and usage please visit the Rules section
 import random
 
-
 class Bot(object):
 
     def evaluate_turn(self, feedback, life):
@@ -37,12 +36,11 @@ class Bot(object):
         result = {}
 
         if feedback['ACTION'] == None:
-            # Arrimamos el primer corchaso
             result = {'ACTION':'SHOOT','ANGLE': 45, 'VEL': 100}
             oldResult = {'ACTION':'SHOOT','ANGLE': 45, 'VEL': 100}
             oldLife = life
 
-        if life < oldLife:
+        if life >= oldLife:
             if feedback['RESULT'] == 'SUCCESS':
                 if oldResult['ACTION'] == 'SHOOT':
                     result = oldResult
@@ -84,8 +82,6 @@ class Bot(object):
             else:
                 result = {'ACTION':'MOVE','WERE': -1}
 
-
-        oldLife
+        oldLife = life
         oldResult = result
         return result
-
